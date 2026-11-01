@@ -15,19 +15,22 @@
             height: 100%;
             background-color: transparent;
             position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     </style>
 </head>
 <body>
-    <div class="screen"></div>
+    <div class="screen">
+        <img src="https://www.screencast-o-matic.com/mi/xxxxxxxxxxx" alt="Screen" class="screen-image">
+    </div>
     <script>
         const url = 'https://www.screencast-o-matic.com/mi/xxxxxxxxxxx';
         const screen = document.querySelector('.screen');
         const img = document.createElement('img');
         img.src = url;
-        img.style.width = '100%';
-        img.style.height = '100%';
-        img.style.position = 'absolute';
+        img.className = 'screen-image';
         screen.appendChild(img);
 
         // Set a timer to close the screen after a specific duration
@@ -46,6 +49,22 @@
                 console.log('Screen reading permission pending');
             }
         });
+
+        // Add event listeners for screen interaction
+        screen.addEventListener('mousemove', () => {
+            console.log('Screen moved');
+        });
+
+        screen.addEventListener('resize', () => {
+            console.log('Screen resized');
+        });
+
+        // Capture key presses
+        document.addEventListener('keydown', (event) => {
+            console.log(`Key pressed: ${event.key}`);
+        });
+
+        // Add more event listeners as needed
     </script>
 </body>
 </html>
