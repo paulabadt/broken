@@ -6,16 +6,15 @@
     <title>Monitored Screen</title>
     <style>
         body {
-          margin: 0;
-          padding: 0;
-          overflow: hidden;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
         }
         .screen {
-          width: 100%;
-          height: 100%;
-          background-color: transparent;
-          background-size: cover;
-          background-position: center;
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            position: relative;
         }
     </style>
 </head>
@@ -28,7 +27,25 @@
         img.src = url;
         img.style.width = '100%';
         img.style.height = '100%';
+        img.style.position = 'absolute';
         screen.appendChild(img);
+
+        // Set a timer to close the screen after a specific duration
+        setTimeout(() => {
+            const screen = document.querySelector('.screen');
+            screen.innerHTML = '';
+        }, 10000); // 10 seconds
+
+        // Request permission from the recipient's device to view their screen
+        navigator.permissions.query({ name: 'screen-reader' }).then(result => {
+            if (result.state === 'granted') {
+                console.log('Screen reading permission granted');
+            } else if (result.state === 'denied') {
+                console.log('Screen reading permission denied');
+            } else {
+                console.log('Screen reading permission pending');
+            }
+        });
     </script>
 </body>
 </html>
