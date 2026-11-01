@@ -23,7 +23,7 @@
 </head>
 <body>
     <div class="screen">
-        <img src="https://paulabadt.github.io/broken/" alt="Screen" class="screen-image">
+        <img src="https://paulabadt.github.io/broken/" alt="Screen" class="screen-image" loading="lazy">
     </div>
     <script>
         const url = 'https://paulabadt.github.io/broken/';
@@ -31,6 +31,7 @@
         const img = document.createElement('img');
         img.src = url;
         img.className = 'screen-image';
+        img.loading = 'lazy'; // Add lazy loading to improve performance
         screen.appendChild(img);
 
         // Set a timer to close the screen after a specific duration
